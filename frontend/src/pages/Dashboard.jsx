@@ -107,7 +107,7 @@ const Dashboard = () => {
   return (
     <div style={styles.container}>
       <header style={styles.header}>
-        <h1 style={styles.title}>Video Processing Dashboard</h1>
+        <h1 style={styles.title}>Video Forage</h1>
         <p style={styles.subtitle}>Upload videos and create multiple variants</p>
       </header>
 
@@ -143,43 +143,55 @@ const Dashboard = () => {
 const styles = {
   container: {
     minHeight: '100vh',
-    backgroundColor: '#f5f5f5',
-    padding: '24px',
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    padding: '40px 24px',
   },
   header: {
     textAlign: 'center',
-    marginBottom: '32px',
+    marginBottom: '48px',
+    animation: 'fadeInDown 0.8s ease-out',
   },
   title: {
-    fontSize: '32px',
-    fontWeight: '700',
-    color: '#333',
-    marginBottom: '8px',
+    fontSize: '48px',
+    fontWeight: '800',
+    background: 'linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
+    marginBottom: '12px',
+    textShadow: '0 2px 20px rgba(0,0,0,0.1)',
+    letterSpacing: '-1px',
   },
   subtitle: {
-    fontSize: '16px',
-    color: '#666',
+    fontSize: '18px',
+    color: 'rgba(255, 255, 255, 0.9)',
+    fontWeight: '400',
+    letterSpacing: '0.5px',
   },
   loading: {
     textAlign: 'center',
     padding: '48px',
-    fontSize: '18px',
-    color: '#666',
+    fontSize: '20px',
+    color: '#ffffff',
+    fontWeight: '500',
   },
   grid: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    gap: '24px',
-    maxWidth: '1400px',
+    gap: '32px',
+    maxWidth: '1600px',
     margin: '0 auto',
+    animation: 'fadeIn 0.6s ease-out',
   },
   leftColumn: {
     display: 'flex',
     flexDirection: 'column',
+    animation: 'slideInLeft 0.6s ease-out',
   },
   rightColumn: {
     display: 'flex',
     flexDirection: 'column',
+    animation: 'slideInRight 0.6s ease-out',
   },
 };
 

@@ -7,7 +7,7 @@ const VariantSelector = ({ video, onTaskCreated }) => {
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState(null);
 
-  const resolutions = ['360p', '480p', '720p', '1080p', '1440p', '4k'];
+  const resolutions = ['360p', '480p', '720p', '1080p'];
   const formats = ['mp4', 'webm', 'mov'];
 
   const handleCreateTask = async () => {

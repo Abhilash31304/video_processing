@@ -28,7 +28,7 @@ class FFmpegService {
 
       let command = ffmpeg(inputPath)
         .output(outputPath)
-        .size(`${resolutionConfig.width}x${resolutionConfig.height}`);
+        .videoFilter(`scale=${resolutionConfig.width}:${resolutionConfig.height}:force_original_aspect_ratio=decrease,pad=${resolutionConfig.width}:${resolutionConfig.height}:(ow-iw)/2:(oh-ih)/2`);
 
       // V1: MP4 with H.264 + AAC
       if (outputFormat === 'mp4' || outputFormat === 'mov') {

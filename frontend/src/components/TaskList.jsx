@@ -37,16 +37,20 @@ const TaskList = ({ tasks, selectedVideo, onDeleteTask }) => {
 
 const styles = {
   container: {
-    backgroundColor: 'white',
-    borderRadius: '8px',
-    padding: '24px',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0.98)',
+    borderRadius: '16px',
+    padding: '28px',
+    boxShadow: '0 10px 40px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.1)',
+    border: '1px solid rgba(255,255,255,0.8)',
+    backdropFilter: 'blur(10px)',
+    minHeight: '400px',
   },
   title: {
-    fontSize: '18px',
-    fontWeight: '600',
-    marginBottom: '16px',
-    color: '#333',
+    fontSize: '22px',
+    fontWeight: '700',
+    marginBottom: '20px',
+    color: '#2d3748',
+    letterSpacing: '-0.5px',
   },
   empty: {
     color: '#666',
