@@ -1,0 +1,22 @@
+services:
+  # Backend API Service
+  - type: web
+    name: video-processing-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: SUPABASE_URL
+        value: https://qmewvllnrstdhsvmdect.supabase.co
+      - key: SUPABASE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFtZXd2bGxucnN0ZGhzdm1kZWN0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU4NjQ1MzgsImV4cCI6MjA4MTQ0MDUzOH0.DXeLyzkbcbh6ac3jt1OpXGONqA2mcxs753I19j9ZIF8
+      - key: UPLOAD_DIR
+        value: ./uploads
+      - key: MAX_FILE_SIZE
+        value: 209715200
+    healthCheckPath: /
