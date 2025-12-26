@@ -10,9 +10,17 @@ const VideoList = ({ videos, selectedVideo, onSelectVideo, onDeleteVideo }) => {
     );
   }
 
+  const isMobile = window.innerWidth <= 768;
+
   return (
-    <div style={styles.container}>
-      <h3 style={styles.title}>Videos ({videos.length})</h3>
+    <div style={{
+      ...styles.container,
+      ...(isMobile && styles.containerMobile),
+    }}>
+      <h3 style={{
+        ...styles.title,
+        ...(isMobile && styles.titleMobile),
+      }}>Videos ({videos.length})</h3>
       
       <div style={styles.list}>
         {videos.map((video) => (
@@ -20,6 +28,7 @@ const VideoList = ({ videos, selectedVideo, onSelectVideo, onDeleteVideo }) => {
             key={video.id}
             style={{
               ...styles.videoItem,
+              ...(isMobile && styles.videoItemMobile),
               ...(selectedVideo?.id === video.id && styles.videoItemSelected)
             }}
             onClick={() => onSelectVideo(video)}
@@ -39,7 +48,10 @@ const VideoList = ({ videos, selectedVideo, onSelectVideo, onDeleteVideo }) => {
                 e.stopPropagation();
                 onDeleteVideo(video.id);
               }}
-              style={styles.deleteButton}
+              style={{
+                ...styles.deleteButton,
+                ...(isMobile && styles.deleteButtonMobile),
+              }}
             >
               Delete
             </button>
@@ -60,12 +72,21 @@ const styles = {
     border: '1px solid rgba(255,255,255,0.8)',
     backdropFilter: 'blur(10px)',
   },
+  containerMobile: {
+    padding: '20px 16px',
+    marginBottom: '20px',
+    borderRadius: '12px',
+  },
   title: {
     fontSize: '22px',
     fontWeight: '700',
     marginBottom: '20px',
     color: '#2d3748',
     letterSpacing: '-0.5px',
+  },
+  titleMobile: {
+    fontSize: '18px',
+    marginBottom: '16px',
   },
   empty: {
     color: '#666',
@@ -87,6 +108,12 @@ const styles = {
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
     backgroundColor: '#ffffff',
     boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+  },
+  videoItemMobile: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    padding: '14px',
+    gap: '12px',
   },
   videoItemSelected: {
     borderColor: '#667eea',
@@ -124,6 +151,11 @@ const styles = {
     marginLeft: '12px',
     transition: 'all 0.3s ease',
     boxShadow: '0 2px 8px rgba(245, 101, 101, 0.3)',
+  },
+  deleteButtonMobile: {
+    width: '100%',
+    marginLeft: '0',
+    padding: '8px 16px',
   },
 };
 

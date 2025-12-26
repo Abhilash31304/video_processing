@@ -38,9 +38,17 @@ const UploadVideo = ({ onUploadSuccess }) => {
     }
   };
 
+  const isMobile = window.innerWidth <= 768;
+
   return (
-    <div style={styles.container}>
-      <h2 style={styles.title}>Upload Video</h2>
+    <div style={{
+      ...styles.container,
+      ...(isMobile && styles.containerMobile),
+    }}>
+      <h2 style={{
+        ...styles.title,
+        ...(isMobile && styles.titleMobile),
+      }}>Upload Video</h2>
       
       <div style={styles.uploadArea}>
         <input
@@ -86,12 +94,21 @@ const styles = {
     backdropFilter: 'blur(10px)',
     transition: 'all 0.3s ease',
   },
+  containerMobile: {
+    padding: '20px 16px',
+    marginBottom: '20px',
+    borderRadius: '12px',
+  },
   title: {
     fontSize: '22px',
     fontWeight: '700',
     marginBottom: '20px',
     color: '#2d3748',
     letterSpacing: '-0.5px',
+  },
+  titleMobile: {
+    fontSize: '18px',
+    marginBottom: '16px',
   },
   uploadArea: {
     display: 'flex',

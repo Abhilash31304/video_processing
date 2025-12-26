@@ -6,18 +6,32 @@ const TaskList = ({ tasks, selectedVideo, onDeleteTask }) => {
     ? 'Select a video to view its tasks' 
     : 'No tasks created for this video yet';
 
+  const isMobile = window.innerWidth <= 768;
+
   if (!tasks || tasks.length === 0) {
     return (
-      <div style={styles.container}>
-        <h3 style={styles.title}>Processing Tasks</h3>
+      <div style={{
+        ...styles.container,
+        ...(isMobile && styles.containerMobile),
+      }}>
+        <h3 style={{
+          ...styles.title,
+          ...(isMobile && styles.titleMobile),
+        }}>Processing Tasks</h3>
         <p style={styles.empty}>{displayMessage}</p>
       </div>
     );
   }
 
   return (
-    <div style={styles.container}>
-      <h3 style={styles.title}>
+    <div style={{
+      ...styles.container,
+      ...(isMobile && styles.containerMobile),
+    }}>
+      <h3 style={{
+        ...styles.title,
+        ...(isMobile && styles.titleMobile),
+      }}>
         Processing Tasks ({tasks.length})
         {selectedVideo && <span style={styles.videoName}> - {selectedVideo.original_name}</span>}
       </h3>
@@ -45,12 +59,21 @@ const styles = {
     backdropFilter: 'blur(10px)',
     minHeight: '400px',
   },
+  containerMobile: {
+    padding: '20px 16px',
+    minHeight: '300px',
+    borderRadius: '12px',
+  },
   title: {
     fontSize: '22px',
     fontWeight: '700',
     marginBottom: '20px',
     color: '#2d3748',
     letterSpacing: '-0.5px',
+  },
+  titleMobile: {
+    fontSize: '18px',
+    marginBottom: '16px',
   },
   empty: {
     color: '#666',

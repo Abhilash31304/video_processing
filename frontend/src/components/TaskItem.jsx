@@ -22,8 +22,13 @@ const TaskItem = ({ task, onDelete }) => {
     return status.charAt(0).toUpperCase() + status.slice(1);
   };
 
+  const isMobile = window.innerWidth <= 768;
+
   return (
-    <div style={styles.container}>
+    <div style={{
+      ...styles.container,
+      ...(isMobile && styles.containerMobile),
+    }}>
       <div style={styles.content}>
         <div style={styles.header}>
           <span style={{
@@ -56,12 +61,18 @@ const TaskItem = ({ task, onDelete }) => {
         )}
       </div>
 
-      <div style={styles.actions}>
+      <div style={{
+        ...styles.actions,
+        ...(isMobile && styles.actionsMobile),
+      }}>
         {task.status === 'completed' && task.output_filename && (
           <a
             href={getDownloadUrl(task.output_filename)}
             download={task.output_filename}
-            style={styles.downloadButton}
+            style={{
+              ...styles.downloadButton,
+              ...(isMobile && styles.downloadButtonMobile),
+            }}
           >
             Download
           </a>
@@ -69,7 +80,10 @@ const TaskItem = ({ task, onDelete }) => {
         
         <button
           onClick={onDelete}
-          style={styles.deleteButton}
+          style={{
+            ...styles.deleteButton,
+            ...(isMobile && styles.deleteButtonMobile),
+          }}
         >
           Delete
         </button>
@@ -89,6 +103,12 @@ const styles = {
     background: 'linear-gradient(135deg, #ffffff 0%, #f7fafc 100%)',
     boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
     transition: 'all 0.3s ease',
+  },
+  containerMobile: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    padding: '16px',
+    gap: '12px',
   },
   content: {
     flex: 1,
@@ -132,6 +152,11 @@ const styles = {
     gap: '8px',
     marginLeft: '12px',
   },
+  actionsMobile: {
+    width: '100%',
+    marginLeft: '0',
+    flexDirection: 'column',
+  },
   downloadButton: {
     padding: '8px 20px',
     background: 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)',
@@ -147,6 +172,10 @@ const styles = {
     transition: 'all 0.3s ease',
     boxShadow: '0 2px 8px rgba(72, 187, 120, 0.3)',
   },
+  downloadButtonMobile: {
+    width: '100%',
+    textAlign: 'center',
+  },
   deleteButton: {
     padding: '8px 16px',
     background: 'linear-gradient(135deg, #f56565 0%, #e53e3e 100%)',
@@ -158,6 +187,9 @@ const styles = {
     cursor: 'pointer',
     transition: 'all 0.3s ease',
     boxShadow: '0 2px 8px rgba(245, 101, 101, 0.3)',
+  },
+  deleteButtonMobile: {
+    width: '100%',
   },
 };
 

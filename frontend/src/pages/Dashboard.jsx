@@ -104,14 +104,32 @@ const Dashboard = () => {
     );
   }
 
+  const isMobile = window.innerWidth <= 768;
+
   return (
-    <div style={styles.container}>
-      <header style={styles.header}>
-        <h1 style={styles.title}>Video Forage</h1>
-        <p style={styles.subtitle}>Upload videos and create multiple variants</p>
+    <div style={{
+      ...styles.container,
+      padding: isMobile ? '20px 12px' : '40px 24px',
+    }}>
+      <header style={{
+        ...styles.header,
+        marginBottom: isMobile ? '24px' : '48px',
+      }}>
+        <h1 style={{
+          ...styles.title,
+          fontSize: isMobile ? '32px' : '48px',
+        }}>Video Forage</h1>
+        <p style={{
+          ...styles.subtitle,
+          fontSize: isMobile ? '14px' : '18px',
+        }}>Upload videos and create multiple variants</p>
       </header>
 
-      <div style={styles.grid}>
+      <div style={{
+        ...styles.grid,
+        gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+        gap: isMobile ? '20px' : '32px',
+      }}>
         <div style={styles.leftColumn}>
           <UploadVideo onUploadSuccess={handleUploadSuccess} />
           
@@ -182,6 +200,10 @@ const styles = {
     maxWidth: '1600px',
     margin: '0 auto',
     animation: 'fadeIn 0.6s ease-out',
+    '@media (max-width: 768px)': {
+      gridTemplateColumns: '1fr',
+      gap: '20px',
+    },
   },
   leftColumn: {
     display: 'flex',
@@ -192,6 +214,20 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     animation: 'slideInRight 0.6s ease-out',
+  },
+  '@media (max-width: 768px)': {
+    container: {
+      padding: '20px 12px',
+    },
+    title: {
+      fontSize: '32px',
+    },
+    subtitle: {
+      fontSize: '14px',
+    },
+    header: {
+      marginBottom: '24px',
+    },
   },
 };
 

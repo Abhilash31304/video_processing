@@ -34,17 +34,28 @@ const VariantSelector = ({ video, onTaskCreated }) => {
     }
   };
 
+  const isMobile = window.innerWidth <= 768;
+
   if (!video) {
     return (
-      <div style={styles.container}>
+      <div style={{
+        ...styles.container,
+        ...(isMobile && styles.containerMobile),
+      }}>
         <p style={styles.noVideo}>Select a video to create variants</p>
       </div>
     );
   }
 
   return (
-    <div style={styles.container}>
-      <h3 style={styles.title}>Create Video Variant</h3>
+    <div style={{
+      ...styles.container,
+      ...(isMobile && styles.containerMobile),
+    }}>
+      <h3 style={{
+        ...styles.title,
+        ...(isMobile && styles.titleMobile),
+      }}>Create Video Variant</h3>
       
       <div style={styles.formGroup}>
         <label style={styles.label}>Resolution:</label>
@@ -102,11 +113,18 @@ const styles = {
     marginBottom: '24px',
     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   },
+  containerMobile: {
+    padding: '20px 16px',
+    marginBottom: '20px',
+  },
   title: {
     fontSize: '18px',
     fontWeight: '600',
     marginBottom: '16px',
     color: '#333',
+  },
+  titleMobile: {
+    fontSize: '16px',
   },
   noVideo: {
     color: '#666',
